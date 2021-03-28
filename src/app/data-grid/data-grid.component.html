@@ -1,1 +1,64 @@
-<p>data-grid works!</p>
+<div style="height: 100%; box-sizing: border-box;">
+    <ag-grid-angular
+      #agGrid
+      style="width: 100%; height: 80vh;"
+      id="myGrid"
+      class="ag-theme-alpine"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowData]="rowData"
+      [paginationAutoPageSize]="true"
+      [pagination]="true"
+      (gridReady)="onGridReady($event)"
+      [quickFilterText]="searchText"
+    ></ag-grid-angular>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Order Details - {{selectedOrder.orderId}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" style="height: 400px;overflow-y: auto;">
+      <div class="card" style="padding: 14px 20px;"  >
+        <div class="d-block">
+            <div class="block-title custFont d-flex">
+               <span> Delivery Address</span>
+            </div>
+            <div class="block-address">
+              <span class='block-name custFont pr-1'>{{selectedOrder.custName | titlecase }}</span>
+              <div>{{selectedOrder.Address}}</div>
+              <div class="custFont1">{{selectedOrder.phone}}</div>
+            </div>
+        </div>
+      </div>
+      <div class="card pad1" style="margin-bottom: 6%" >
+        <div class="card-body padd" >
+          <div  *ngFor="let item of selectedOrder.ProductDetails"  class="outerDiv">
+            <div class="innerDiv d-flex">
+                <div class="midDiv" >
+                    <div style="display: block;color: #878787;font-size: 14px;margin-top: 2%">
+                      {{item.name}}
+                    </div>
+                    <div style="margin-top: 2%">
+                      <span style="font-size: 15px;font-weight: 500;color: #212121;margin-right: 10px;"><i class='fa fa-inr'></i>{{item.price-(item.price*(item.discount/100)) | number:'1.0-0'}}</span>
+                      <span style="font-size: 11px;font-weight: 500;color: #878787;
+                      text-decoration: line-through;margin-right: 10px;"><i class='fa fa-inr'></i>{{item.price}}</span>
+                      <span style="font-size: 11px;font-weight: 500;color: #388e3c;">{{(item.discount/100)| percent}}</span>
+                      </div>
+                    <div style="margin-top: 2%;" class="d-flex content">
+                        <span style="font-size: 13px;font-weight: 500;color: #212121;margin-right: 10px;">Qty : {{item.quantity}}</span>
+                        <span style="font-size: 15px;font-weight: 500;color: #212121;"><i class='fa fa-inr'></i>{{item.price*item.quantity-((item.price*item.quantity)*(item.discount/100)) | number:'1.0-0'}}</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div style="justify-content: flex-end;display: flex;"> 
+            <span style="font-size: 15px;font-weight: 500;color: #212121;margin-right: 20px;">Total : <i class='fa fa-inr'></i>{{selectedOrder.totalAmt}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>

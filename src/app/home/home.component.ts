@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  
   constructor() { }
+
+  searchText :string="";
 
   ngOnInit() {
   }
 
+  UpdateOrders(event:any){
+    
+  }
+
+  chartClicked(searchText:string){
+    //whenever use clicks on any section in chart, the grid is filtered based on the selected status.
+    this.searchText=searchText
+
+  }
 }

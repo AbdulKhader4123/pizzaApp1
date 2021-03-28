@@ -1,0 +1,69 @@
+::ng-deep .dropdown-item{
+    line-height: 30px;
+    font-size: 14px;
+}
+::ng-deep .actions-button-cell{
+    overflow: visible;
+}
+::ng-deep .ag-header-cell-label {
+    justify-content: center!important;
+ }
+::ng-deep .ag-cell-focus,.ag-cell{
+    border: none!important;
+}
+::ng-deep .ag-row{
+    z-index: 0;
+}
+::ng-deep .ag-row.ag-row-focus{
+    z-index: 1;
+}
+::ng-deep.link{
+    color: rgb(27,110,173);
+    cursor: pointer;
+    text-decoration: none!important;
+    font-weight: bold;
+}
+
+::ng-deep.statusClass{
+    text-decoration: none!important;
+}
+
+.block-title{
+    color: #878787;
+    font-size: 15px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+.block-address{
+    font-size: 14px;
+    max-width: 630px;
+}
+.block-name{
+    color: #212121;
+}
+.custFont{
+    font-weight: 500;
+    font-family: Roboto,Arial,sans-serif;
+    letter-spacing: 0;
+}
+.outerDiv{
+    padding: 8px;
+    max-width: 950px;
+}
+.midDiv{
+    min-height: 112px;
+    flex: 1 1;
+    overflow: hidden;
+    max-width: 460px;
+    padding: 0 0% 0% 1%;
+}
+
+.content{
+    justify-content: space-between
+}
+.padd{
+    padding: 5px;
+}
+.pad1{
+    margin-top: 2%;
+}

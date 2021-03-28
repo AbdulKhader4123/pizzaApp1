@@ -11,13 +11,16 @@
 </header>
 
 <main>
-    <section class="col-md-12 parentSection">
-        <section class="col-md-5">
-            <app-piechart></app-piechart>
-        </section>
-        <section class="col-md-7">
-            <app-data-grid></app-data-grid>
-        </section>
-    </section>
+  <section class="col-md-12 parentSection">
+      <section class="col-md-3">
+          <app-piechart (chartClick)="chartClicked($event)"></app-piechart>
+      </section>
+      <section class="col-md-9">
+        <div class="search_text">
+          <input type="text" style="width: 275px;" [(ngModel)]="searchText" placeholder="Enter text to filter grid">
+        </div>
+        <app-data-grid [searchText]="searchText" (UpdateOrders)="UpdateOrders($event)"></app-data-grid>
+      </section>
+  </section>
 </main>
 
